@@ -28,14 +28,15 @@ stages{
                 stage ('Deploy to Staging'){
                     steps {
                         sh "whoami"
-                        sh "scp -i /home/aponcepe/webserver/aws/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps"
+                        sh "ls -al /home/aponcepe/webserver/aws/"
+                        sh "scp -i /home/aponcepe/webserver/aws/tomcat-demo-jk.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps"
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
                         sh "whoami"
-                        sh "scp -i /home/aponcepe/webserver/aws/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat/webapps"
+                        sh "scp -i /home/aponcepe/webserver/aws/tomcat-demo-jk.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat/webapps"
                     }
                 }
             }
