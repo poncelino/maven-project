@@ -28,7 +28,7 @@ stages{
                 stage ('Deploy to Staging'){
                     steps {
                         sh "whoami"
-                        sh "ls -al /home/aponcepe/webserver/aws/"
+                        sh "cat /home/aponcepe/webserver/aws/tomcat-demo-jk.pem"
                         sh "scp -o StrictHostKeyChecking=no -i /home/aponcepe/webserver/aws/tomcat-demo-jk.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps"
                     }
                 }
